@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="loginbox">
-  <form class="esteFormulario" action="/editProduct/{{$products[0]->id}}" method="post">
+  <form class="esteFormulario" action="/editProduct/{{$products[0]->id}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
     <select class="producto" name="">
@@ -27,6 +27,10 @@
           <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
       </select>
+
+      <div class="">
+        <input type="file" name="imagen" value="">
+      </div>
 
       <input type="submit" name="" value="modificar">
 

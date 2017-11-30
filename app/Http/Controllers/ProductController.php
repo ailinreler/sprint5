@@ -48,7 +48,11 @@ class ProductController extends Controller
     }
 
 
-    $product = Product::create(request(['name', 'precio', 'category_id']));
+    $product = Product::create([
+      'name' => request('name'),
+      'precio' => request('precio'),
+      'category_id' => request('category_id'),
+    ]);
 
     if (isset($imagen)) {
       $product->imagen = $imagen;
@@ -95,7 +99,18 @@ class ProductController extends Controller
       $product->category_id = $request->category;
     }
 
+    if ($request->imagen !== null) {
+
+      $extensionImagen = $request->file('imagen')->getClientOriginalExtension();
+
+      $imagen = $request->file('imagen')->storeAs('imagenProducto', uniqid() . "." . $extensionImagen, 'public');
+
+      $product->imagen = $imagen;
+    }
+
     $product->save();
+
+    return redirect()->home();
 
   }
 

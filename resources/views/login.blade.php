@@ -12,10 +12,14 @@
       </div>
     @endif
 
+    <div class="divErrores">
+
+    </div>
+
 
     <div class="loginbox">
       <img class="user" src="images/user-login.png" alt="" >
-      <form class="loginbox-form" action="/login" method="post" enctype="multipart/form-data">
+      <form id="loginform" class="loginbox-form" action="/login" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="inputbox">
           <input class="username" type="text" name="name" value="" placeholder="Usuario">
@@ -38,5 +42,7 @@
     </div>
 
   </div>
+
+  <script type="text/javascript" src="\js\scrypt.js"></script>
 
 @endsection

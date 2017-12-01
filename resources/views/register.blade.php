@@ -11,10 +11,14 @@
       </div>
     @endif
 
+    <div class="divErrores">
+
+    </div>
+
 
     <div class="loginbox">
       <img class="user" src="images/user-login.png" alt="" >
-      <form class="loginbox-form" action="/register" method="post" enctype="multipart/form-data">
+      <form id="register-form" class="loginbox-form" action="/register" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="inputbox">
           <input class="username" type="text" name="name" value="" placeholder="Usuario">
@@ -27,7 +31,7 @@
 
         </div>
         <div class="inputbox">
-          <input class="password" type="password" name="password_confirmation" value="" placeholder="Corroborar Contraseña">
+          <input class="password_confirmation" type="password" name="password_confirmation" value="" placeholder="Corroborar Contraseña">
           <span><i class="fa fa-lock" aria-hidden="true"></i></span>
 
         </div>
@@ -52,4 +56,8 @@
       </div>
 
     </div>
+
+    <script type="text/javascript" src="\js\scrypt.js">
+
+    </script>
 @endsection

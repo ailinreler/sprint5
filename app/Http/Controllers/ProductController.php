@@ -117,7 +117,11 @@ class ProductController extends Controller
   public function filter(Request $request)
   {
     // dd($request->input('categoria-seleccion'));
-    $product = Product::where('category_id', $request->input('categoria-seleccion'))->get();
+    $products = Product::where('category_id', $request->input('categoria-seleccion'))->get();
+
+    $categories = Category::all();
+
+    return view('filterPage', compact('products', 'categories'));
 
   }
 

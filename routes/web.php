@@ -43,6 +43,10 @@ Route::get('/nuevaCategoria', 'categoryController@index');
 
 Route::post('/addCategory', 'categoryController@store');
 
+Route::post('/filtro', 'productController@filter');
+
+
+
 Route::prefix('test')->group(function() {
   Route::get('/products', 'TestController@products');
 });

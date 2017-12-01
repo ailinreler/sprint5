@@ -8,7 +8,7 @@
     {{ method_field('PATCH') }}
     <select class="producto" name="">
       @foreach ($products as $product)
-        <option value="{{$product->id}}">{{$product->name}} {{$product->precio}}</option>
+        <option value="{{$product->id}}">{{$product->name}} - ${{$product->precio}}</option>
       @endforeach
     </select>
 

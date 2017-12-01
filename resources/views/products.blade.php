@@ -4,12 +4,17 @@
   <div class="page-select">
     <label>Elegir producto</label>
     <div class="product-select">
-      <form class="formulario" action="index.html" method="post">
+      <form class="formulario" action="/filtro" method="post">
+
+        {{ csrf_field() }}
+        
         <select name="categoria-seleccion" class="categoria-seleccion">
           @foreach ($categories as $category)
             <option value="{{$category->id}}">{{$category->name}}</option>
           @endforeach
         </select>
+
+        <input type="submit" name="filtro" value="filtrar">
 
       </form>
     </div>
@@ -27,7 +32,7 @@
     </div>
     <br>
     <label>Elegir precio</label>
-    <div class="product-select">
+  <div class="product-select">
     <select>
       <option value="Descuento1">10%</option>
       <option value="Descuento2">20%</option>

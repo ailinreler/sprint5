@@ -19,4 +19,12 @@ class Product extends Model
       return $this->belongsToMany('App\Tag', 'product_tag', 'product_id', 'tag_id');
 
     }
+
+    public function categoryFilter($id)
+    {
+      $products = Product::all()->where('category_id' , $id);
+      return $products;
+    }
+
+
 }

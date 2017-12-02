@@ -15,34 +15,26 @@
           @endforeach
         </select>
 
+        <label>Elegir Tag</label>
+      <div class="product-select">
+        <select name="tag">
+
+          <option value="">Elegir tag</option>
+          @foreach ($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+          @endforeach
+        </select>
+      </div>
+
         <input type="submit" name="filtro" value="filtrar">
 
       </form>
     </div>
     <br>
-    <label>Elegir marca</label>
-    <div class="product-select">
-    <select>
-      <option value="Marca1">Apple</option>
-      <option value="Marca2">Samsung</option>
-      <option value="Marca3">Motorola</option>
-      <option value="Marca4">Huawei</option>
-      <option value="Marca5">Sony</option>
-      <option value="Marca6">LG</option>
-    </select>
-    </div>
-    <br>
-    <label>Elegir precio</label>
-  <div class="product-select">
-    <select>
-      <option value="Descuento1">10%</option>
-      <option value="Descuento2">20%</option>
-      <option value="Descuento3">30%</option>
-      <option value="Descuento4">40%</option>
-      <option value="Descuento5">50%</option>
-      <option value="Descuento6">Other</option>
-    </select>
-  </div>
+
+
+
+
   </div>
   <!--=================PRODUCTOS DE LA PAGINA==============================-->
   <div class="page-product">

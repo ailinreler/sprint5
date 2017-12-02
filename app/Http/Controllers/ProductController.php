@@ -124,12 +124,23 @@ class ProductController extends Controller
 
   public function filter(Request $request)
   {
-    // dd($request->input('categoria-seleccion'));
-    $products = Product::where('category_id', $request->input('categoria-seleccion'))->get();
+    $tags = Tag::all();
+
+    $products = Product::where('category_id', $request->input('categoria-seleccion'));
+
+    $idTag = $request->input('tag');
+
+    if($request->input('tag') !== null){
+      $products = $products->whereHas('tags', function($query) use ($idTag){
+        $query->where('id', '=', $idTag);
+      });
+    }
+
+    $products = $products->get();
 
     $categories = Category::all();
 
-    return view('filterPage', compact('products', 'categories'));
+    return view('filterPage', compact('products', 'categories', 'tags'));
 
   }
 

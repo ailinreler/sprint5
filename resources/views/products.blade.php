@@ -14,20 +14,22 @@
           @endforeach
         </select>
 
+        <label>Elegir Tag</label>
+      <div class="product-select">
+        <select name="tag">
+          @foreach ($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+          @endforeach
+        </select>
+      </div>
+
         <input type="submit" name="filtro" value="filtrar">
 
       </form>
     </div>
     <br>
 
-    <label>Elegir Tag</label>
-  <div class="product-select">
-    <select name="tag">
-      @foreach ($tags as $tag)
-        <option value="{{$tag->id}}">{{$tag->name}}</option>
-      @endforeach
-    </select>
-  </div>
+
   </div>
   <!--=================PRODUCTOS DE LA PAGINA==============================-->
   <div class="page-product">

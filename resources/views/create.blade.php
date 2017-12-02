@@ -15,13 +15,20 @@
       <label for="imagen">Imagen:</label>
       <input id="imagen" type="file" name="imagen" value="">
 
-      <label for="category_id"></label>
       <select id="category_id" class="" name="category_id">
 
         <option value="">Elegir categoria</option>
 
         @foreach ($categories as $category)
           <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
+      </select>
+
+      <label for="tag">Tag:</label>
+      <select class="" id="tag" name="tag">
+        <option value="">Seleccionar tag</option>
+        @foreach ($tags as $tag)
+          <option value="{{$tag->id}}">{{$tag->name}}</option>
         @endforeach
       </select>
 

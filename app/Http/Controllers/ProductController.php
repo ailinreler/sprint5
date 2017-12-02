@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\User;
 use App\Category;
+use App\Tag;
 
 class ProductController extends Controller
 {
@@ -14,16 +15,18 @@ class ProductController extends Controller
   {
 
     $categories = Category::all();
+    $tags = Tag::all();
 
-    return view('create', compact('categories'));
+    return view('create', compact('categories', 'tags'));
   }
 
   public function index()
   {
     $products = Product::all();
     $categories = Category::all();
+    $tags = Tag::all();
 
-    return view('products', compact('products', 'categories'));
+    return view('products', compact('products', 'categories', 'tags'));
   }
 
   public function goToEdit()
@@ -47,18 +50,23 @@ class ProductController extends Controller
       $imagen = $request->file('imagen')->storeAs('imagenProducto', uniqid() . "." . $extensionImagen, 'public');
     }
 
+    $category = Category::find($request->input('category_id'));
+
 
     $product = Product::create([
       'name' => request('name'),
       'precio' => request('precio'),
-      'category_id' => request('category_id'),
     ]);
+
+    $product->category()->associate($category);
 
     if (isset($imagen)) {
       $product->imagen = $imagen;
-
-      $product->save();
     }
+
+    $product->tags()->sync([$request->input('tag')]);
+
+    $product->save();
 
     return redirect('/products');
 
